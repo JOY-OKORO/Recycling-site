@@ -4,7 +4,6 @@ import React, { useState, useEffect, useRef } from 'react';
 
 const Navbar = () => {
 	const [isMenu, setIsMenu] = useState(false);
-	const [contact, setContact] = useState(false);
 	const [scroll, setScroll] = useState(false);
 	const menuRef = useRef(null);
 
