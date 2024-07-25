@@ -5,83 +5,86 @@ import React, { useState, useEffect, useRef } from 'react';
 const Navbar = () => {
 	const [isMenu, setIsMenu] = useState(false);
 	const [contact, setContact] = useState(false);
+	const [scroll, setScroll] = useState(false);
 	const menuRef = useRef(null);
-	return (
-		<header className=' px-32 z-50 w-screen h-20 drop-shadow-xl'>
-			{/* Desktop */}
-			<div className='hidden md:flex w-full h-full items-center justify-between shadow-white'>
-				<p className=''>Recycle</p>
-				<div className='flex items-center gap-8'>
-					<ul className='flex item-center gap-8 ml-auto'>
-						<li
-							className={`cursor-pointer  hover:text-gray-700 duration-100 transition-all ease-in-out text-xl font-semibold`}>
-							Home
-						</li>
-						<li
-							className={`cursor-pointer  hover:text-gray-700  duration-100 transition-all ease-in-out text-xl font-semibold`}>
-							About
-						</li>
-						<li
-							className={`cursor-pointer hover:text-gray-700 duration-100 transition-all ease-in-out text-xl font-semibold`}>
-							Service
-						</li>
-						<li
-							className={`cursor-pointer hover:text-gray-700  duration-100 transition-all ease-in-out text-xl font-semibold `}>
-							Potfolio
-						</li>
-					</ul>
-				</div>
-			</div>
-			{/* Mobile */}
-			<div className='flex items-center justify-between md:hidden w-full h-full'>
-				<p className='logo'>Daniel Agbeni</p>
-				<div
-					className='relative'
-					onClick={() => setIsMenu(!isMenu)}>
-					{isMenu ? (
-						<MdClose className='text-3xl font-extrabold text-red-600 duration-500' />
-					) : (
-						<MdMenu className='text-3xl font-bold text-gray-400 duration-500' />
-					)}
 
-					{isMenu && (
-						<div
-							ref={menuRef}
-							className='w-64 bg-gray-800 shadow-xl rounded-lg flex flex-col absolute top-12 right-0 py-3 px-3 z-50'>
-							<ul className='flex flex-col gap-1'>
-								<li
-									className='cursor-pointer font-extrabold hover:bg-gray-600 text-white duration-500 rounded-lg transition-all ease-in-out px-4 py-2'
-									onClick={() => setIsMenu(false)}>
-									Home
-								</li>
-								<li
-									className='cursor-pointer font-extrabold hover:bg-gray-600 text-white duration-500 rounded-lg transition-all ease-in-out px-4 py-2'
-									onClick={() => setIsMenu(false)}>
-									About
-								</li>
-								<li
-									className='cursor-pointer font-extrabold hover:bg-gray-600 text-white duration-500 rounded-lg transition-all ease-in-out px-4 py-2'
-									onClick={() => setIsMenu(false)}>
-									Service
-								</li>
-								<li
-									className='cursor-pointer font-extrabold hover:bg-gray-600 text-white duration-500 rounded-lg transition-all ease-in-out px-4 py-2'
-									onClick={() => setIsMenu(false)}>
-									Potfolio
-								</li>
-								<li
-									className='cursor-pointer font-extrabold hover:bg-gray-600 text-white duration-500 rounded-lg transition-all ease-in-out px-4 py-2'
-									onClick={() => {
-										setIsMenu(false);
-										setContact(!contact);
-									}}>
-									Contact
-								</li>
-							</ul>
-						</div>
-					)}
+	useEffect(() => {
+		const handleScroll = () => {
+			const scrollTop =
+				window.pageYOffset || document.documentElement.scrollTop;
+			setScroll(scrollTop > 150);
+		};
+
+		window.addEventListener('scroll', handleScroll);
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
+	}, []);
+
+	return (
+		<header
+			className={`${
+				scroll ? 'fixed' : 'relative'
+			} w-full h-20 drop-shadow-sm z-50 bg-white transition-all duration-700 transition-delay-500`}>
+			<div className='container mx-auto px-4 h-full'>
+				<div className='flex items-center justify-between h-full'>
+					<p className='text-xl font-semibold'>BAOBA COMPANY LIMITED</p>
+
+					{/* Desktop Navigation */}
+					<nav className='hidden md:block'>
+						<ul className='flex items-center space-x-8'>
+							{['Home', 'About', 'Products', 'Accreditation', 'Contact'].map(
+								(item) => (
+									<li key={item}>
+										<a
+											href='#'
+											className='text-lg font-semibold transition-colors duration-300 hover:bg-black hover:text-white rounded'>
+											{item}
+										</a>
+									</li>
+								),
+							)}
+						</ul>
+					</nav>
+
+					{/* Mobile Navigation */}
+					<div className='md:hidden'>
+						<button
+							onClick={() => setIsMenu(!isMenu)}
+							className='p-2'>
+							{isMenu ? (
+								<MdClose className='text-3xl text-red-600' />
+							) : (
+								<MdMenu className='text-3xl text-gray-400' />
+							)}
+						</button>
+
+						{isMenu && (
+							<div
+								ref={menuRef}
+								className='absolute top-full right-0 w-64 bg-gray-800 shadow-xl rounded-lg mt-2 py-3 px-4'>
+								<ul className='space-y-2'>
+									{[
+										'Home',
+										'About',
+										'Products',
+										'Accreditation',
+										'Contact',
+									].map((item) => (
+										<li key={item}>
+											<a
+												href='#'
+												className='block py-2 px-4 text-white font-semibold hover:bg-gray-700 rounded-lg transition-colors duration-300'
+												onClick={() => setIsMenu(false)}>
+												{item}
+											</a>
+										</li>
+									))}
+								</ul>
+							</div>
+						)}
+					</div>
 				</div>
-				{contact ? <Contact click={setContact} /> : ''}
 			</div>
 		</header>
 	);
