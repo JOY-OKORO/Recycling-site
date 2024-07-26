@@ -3,6 +3,8 @@ import SEO from './SEO';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Navbar from '@/components/Navbar';
+import Contact from '@/components/Contact';
+import Accreditation from '@/components/Accreditation';
 
 const Home = () => {
 	return (
@@ -14,6 +16,8 @@ const Home = () => {
 
 			<Hero />
 			<About />
+			<Accreditation />
+			<Contact />
 		</div>
 	);
 };

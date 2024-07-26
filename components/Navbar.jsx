@@ -38,17 +38,21 @@ const Navbar = () => {
 					{/* Desktop Navigation */}
 					<nav className='hidden md:block'>
 						<ul className='flex items-center space-x-8'>
-							{['Home', 'About', 'Products', 'Accreditation', 'Contact'].map(
-								(item) => (
-									<li key={item}>
-										<a
-											href='#'
-											className='text-lg text-primary-100 font-semibold transition-colors duration-300 hover:text-primary-400 rounded'>
-											{item}
-										</a>
-									</li>
-								),
-							)}
+							{[
+								{ name: 'Home', link: '#' },
+								{ name: 'About', link: '#about' },
+								{ name: 'Products', link: '#products' },
+								{ name: 'Accreditation', link: '#accreditation' },
+								{ name: 'Contact', link: '#contact' },
+							].map((item) => (
+								<li key={item.name}>
+									<a
+										href={item.link}
+										className='text-lg text-primary-100 font-semibold transition-colors duration-300 hover:text-primary-400 rounded'>
+										{item.name}
+									</a>
+								</li>
+							))}
 						</ul>
 					</nav>
 
@@ -70,18 +74,18 @@ const Navbar = () => {
 								className='absolute top-full right-0 w-64 bg-gray-800 shadow-xl rounded-lg mt-2 py-3 px-4'>
 								<ul className='space-y-2'>
 									{[
-										'Home',
-										'About',
-										'Products',
-										'Accreditation',
-										'Contact',
+										{ name: 'Home', link: '#' },
+										{ name: 'About', link: '#about' },
+										{ name: 'Products', link: '#products' },
+										{ name: 'Accreditation', link: '#accreditation' },
+										{ name: 'Contact', link: '#contact' },
 									].map((item) => (
-										<li key={item}>
+										<li key={item.name}>
 											<a
-												href='#'
+												href={item.link}
 												className='block py-2 px-4 text-white font-semibold hover:bg-gray-700 rounded-lg transition-colors duration-300'
 												onClick={() => setIsMenu(false)}>
-												{item}
+												{item.name}
 											</a>
 										</li>
 									))}
