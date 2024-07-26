@@ -1,6 +1,7 @@
 'use client';
 import { MdClose, MdMenu } from 'react-icons/md';
 import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 const Navbar = () => {
 	const [isMenu, setIsMenu] = useState(false);
@@ -27,7 +28,12 @@ const Navbar = () => {
 			} w-full h-20 drop-shadow-sm z-50 bg-white transition-all duration-700 transition-delay-500`}>
 			<div className='container mx-auto px-4 h-full'>
 				<div className='flex items-center justify-between h-full'>
-					<p className='text-xl font-semibold'>BAOBA COMPANY LIMITED</p>
+					<Image
+						src='/icon.png'
+						alt='icon'
+						width={160}
+						height={12}
+					/>
 
 					{/* Desktop Navigation */}
 					<nav className='hidden md:block'>
@@ -37,7 +43,7 @@ const Navbar = () => {
 									<li key={item}>
 										<a
 											href='#'
-											className='text-lg font-semibold transition-colors duration-300 hover:bg-black hover:text-white rounded'>
+											className='text-lg text-primary-100 font-semibold transition-colors duration-300 hover:text-primary-400 rounded'>
 											{item}
 										</a>
 									</li>
