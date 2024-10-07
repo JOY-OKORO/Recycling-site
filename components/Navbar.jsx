@@ -8,11 +8,12 @@ const Navbar = () => {
 	const [scroll, setScroll] = useState(false);
 	const menuRef = useRef(null);
 
+	// Handle scrolling logic
 	useEffect(() => {
 		const handleScroll = () => {
 			const scrollTop =
 				window.pageYOffset || document.documentElement.scrollTop;
-			setScroll(scrollTop > 150);
+			setScroll(scrollTop > 500);
 		};
 
 		window.addEventListener('scroll', handleScroll);
@@ -21,13 +22,22 @@ const Navbar = () => {
 		};
 	}, []);
 
+	// Lock body scroll when the mobile menu is open
+	useEffect(() => {
+		if (isMenu) {
+			document.body.style.overflow = 'hidden';
+		} else {
+			document.body.style.overflow = 'auto';
+		}
+	}, [isMenu]);
+
 	return (
 		<header
 			className={`${
-				scroll ? 'fixed' : 'relative'
-			} w-full h-20 drop-shadow-sm z-50 bg-white transition-all duration-700 transition-delay-500`}>
+				scroll ? 'fixed top-0 left-0 w-full z-50 shadow-lg' : 'relative'
+			} bg-white transition-all duration-700`}>
 			<div className='container mx-auto px-4 h-full'>
-				<div className='flex items-center justify-between h-full'>
+				<div className='flex items-center justify-between h-20'>
 					<Image
 						src='/icon.png'
 						alt='icon'
@@ -71,7 +81,7 @@ const Navbar = () => {
 						{isMenu && (
 							<div
 								ref={menuRef}
-								className='absolute top-full right-0 w-64 bg-gray-800 shadow-xl rounded-lg mt-2 py-3 px-4'>
+								className='absolute top-full right-0 w-64 bg-gray-800 shadow-xl rounded-lg mt-2 py-3 px-4 z-50'>
 								<ul className='space-y-2'>
 									{[
 										{ name: 'Home', link: '#' },

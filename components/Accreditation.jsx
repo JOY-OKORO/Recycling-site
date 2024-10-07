@@ -21,28 +21,28 @@ const Accreditation = () => {
 					</p>
 					<div className='w-1/2 md:w-1/4 p-4'>
 						<img
-							src='/accreditation1.webp'
+							src='/images/accreditation1.webp'
 							alt='Accreditation 1'
 							className='mx-auto'
 						/>
 					</div>
 					<div className='w-1/2 md:w-1/4 p-4'>
 						<img
-							src='/accreditation2.webp'
+							src='/images/accreditation2.webp'
 							alt='Accreditation 2'
 							className='mx-auto'
 						/>
 					</div>
 					<div className='w-1/2 md:w-1/4 p-4'>
 						<img
-							src='/accreditation3.webp'
+							src='/images/accreditation3.webp'
 							alt='Accreditation 3'
 							className='mx-auto'
 						/>
 					</div>
 					<div className='w-1/2 md:w-1/4 p-4'>
 						<img
-							src='/accreditation4.webp'
+							src='images/accreditation4.webp'
 							alt='Accreditation 4'
 							className='mx-auto'
 						/>
