@@ -1,4 +1,4 @@
-// components/Accreditation.js
+// components/Accreditation.jsx
 import Image from 'next/image';
 import React from 'react';
 
@@ -11,41 +11,34 @@ const Accreditation = () => {
 				<h2 className='text-2xl font-bold text-center mb-8'>
 					Our Accreditations
 				</h2>
-				<div className='flex flex-wrap justify-center items-center space-y-4 md:space-y-0 md:space-x-6'>
-					<p className='font-medium text-xl'>
-						In addition to developing state of the art facilities, we also
-						ensure that our products are certified by the European Food Safety
-						Authority (EFSA), U.S. food and drug administration (FDA), Standard
-						Organization of Nigeria (SON), and the Halal Certification
-						Authority.
+				<div className='flex flex-col items-center max-w-4xl mx-auto'>
+					<p className='font-medium text-xl text-center mb-8'>
+						We are fully registered with the Corporate Affairs Commission (CAC)
+						of Nigeria and possess a valid Tax Identification Number (TIN),
+						ensuring our commitment to legal compliance and business
+						transparency.
 					</p>
-					<div className='w-1/2 md:w-1/4 p-4'>
-						<img
-							src='/images/accreditation1.webp'
-							alt='Accreditation 1'
-							className='mx-auto'
-						/>
-					</div>
-					<div className='w-1/2 md:w-1/4 p-4'>
-						<img
-							src='/images/accreditation2.webp'
-							alt='Accreditation 2'
-							className='mx-auto'
-						/>
-					</div>
-					<div className='w-1/2 md:w-1/4 p-4'>
-						<img
-							src='/images/accreditation3.webp'
-							alt='Accreditation 3'
-							className='mx-auto'
-						/>
-					</div>
-					<div className='w-1/2 md:w-1/4 p-4'>
-						<img
-							src='images/accreditation4.webp'
-							alt='Accreditation 4'
-							className='mx-auto'
-						/>
+					<div className='flex flex-wrap justify-center gap-8'>
+						<div className='w-full md:w-1/3 p-4'>
+							<img
+								src='/images/CAC-Logo.png'
+								alt='Corporate Affairs Commission'
+								className='mx-auto h-32 object-contain'
+							/>
+							<p className='text-center mt-2 font-medium'>
+								Corporate Affairs Commission
+							</p>
+						</div>
+						<div className='w-full md:w-1/3 p-4'>
+							<img
+								src='/images/TIN.jpg'
+								alt='Tax Identification Number'
+								className='mx-auto h-32 object-contain'
+							/>
+							<p className='text-center mt-2 font-medium'>
+								Tax Identification Number
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>

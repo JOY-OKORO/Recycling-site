@@ -9,11 +9,11 @@ export const metadata = {
 	openGraph: {
 		type: 'website',
 		locale: 'en_IE',
-		url: 'https://danielagbeni.netlify.app',
+		url: 'http://baobacompanylimited.com',
 		site_name: 'BAOBA COMPANY LIMITED',
 		images: [
 			{
-				url: 'https://nextjs-boilerplate.vercel.app/og-image.png',
+				url: 'http://baobacompanylimited.com/',
 				width: 1200,
 				height: 630,
 				alt: 'BAOBA COMPANY LIMITED',
